@@ -47,11 +47,6 @@ kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic clickbait-e
 
 You should see JSON-like messages arriving as you click items on the webpage.
 
-### Automated Test Result
-Here is a recording of the automated verification test:
-
-![Automated Test](/C:/Users/Sumit%20Patnaik/.gemini/antigravity/brain/fc90ae41-bace-4d30-a115-fca253a6240f/clickbait_demo_test_1766908683981.webp)
-
 ## 5. Real-time Dashboard
 A live dashboard is available to visualize the stream.
 
@@ -60,8 +55,7 @@ A live dashboard is available to visualize the stream.
 3.  Click on cards in the main page.
 4.  Watch the Dashboard update instantly with the new events and a chart.
 
-### Dashboard Verification Recording
-![Dashboard Test](/C:/Users/Sumit%20Patnaik/.gemini/antigravity/brain/fc90ae41-bace-4d30-a115-fca253a6240f/dashboard_test_final_1766911809902.webp)
+
 
 ## 6. Next Steps
 - Implement Siebel OpenUI integration.
