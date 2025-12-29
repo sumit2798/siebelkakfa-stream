@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamly - Real-time Click Analysis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Streamly</h1>
+            <p>Real-time User Interaction Analysis</p>
+        </header>
+        
+        <main>
+            <section class="hero">
+                <h2>Trending Now</h2>
+                <p>Discover the most engaging content on the web. Click to analyze.</p>
+            </section>
+
+            <div class="grid-container">
+                <!-- Clickbait Item 1 -->
+                <div class="card" onclick="trackClick('You Won\'t Believe This Java Trick!', 'article-001')">
+                    <div class="card-image gradient-1"></div>
+                    <div class="card-content">
+                        <span class="tag">Viral</span>
+                        <h3>You Won't Believe This Java Trick!</h3>
+                        <p>Developers are shocked by this simple one-liner that saves 50% memory.</p>
+                    </div>
+                </div>
+
+                <!-- Clickbait Item 2 -->
+                <div class="card" onclick="trackClick('10 Things Siebel Developers Hide From You', 'article-002')">
+                    <div class="card-image gradient-2"></div>
+                    <div class="card-content">
+                        <span class="tag">Insider</span>
+                        <h3>10 Things Siebel Developers Hide From You</h3>
+                        <p>Number 7 will absolutely blow your mind. Check it out now!</p>
+                    </div>
+                </div>
+
+                <!-- Clickbait Item 3 -->
+                <div class="card" onclick="trackClick('Is Kafka the New Database?', 'article-003')">
+                    <div class="card-image gradient-3"></div>
+                    <div class="card-content">
+                        <span class="tag">Tech</span>
+                        <h3>Is Kafka the New Database?</h3>
+                        <p>Why modern architectures are ditching traditional DBs for logs.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <div id="toast" class="toast">Event Sent to Kafka!</div>
+    </div>
+
+    <script>
+        function trackClick(title, id) {
+            const payload = {
+                event: "click",
+                title: title,
+                articleId: id,
+                timestamp: new Date().toISOString()
+            };
+
+            fetch('/api/click', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showToast();
+                    console.log("Event sent successfully:", payload);
+                } else {
+                    console.error("Failed to send event");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        }
+
+        function showToast() {
+            const toast = document.getElementById("toast");
+            toast.className = "toast show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+    </script>
+</body>
+</html>
