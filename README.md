@@ -22,7 +22,8 @@ In this demo, we simulate a "Clickbait" news site. Every time a user clicks a ca
 Here is a view of the application dashboard from a live run.
 
 ![Streamly Dashboard](images/dashboard.png)
-
+![Dashboard 2](images/Dashboard-2.jpeg)
+![Dashboard 3](images/Dashboard-3.jpeg)
 ---
 
 ## 🚀 Build & Run
